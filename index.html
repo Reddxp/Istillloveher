@@ -11,7 +11,7 @@
 body, html {
   width:100%;
   height:100%;
-  overflow:hidden;
+  overflow-x:hidden;
   font-family:'Roboto',sans-serif;
   background: url('4.jfif') no-repeat center center fixed; /* <-- Your background image */
   background-size: cover;
@@ -95,7 +95,7 @@ body, html {
   justify-content:center;
   padding:30px;
   border-radius:20px;
-  background: rgba(0,0,0,0.5); /* semi-transparent to show bg */
+  background: rgba(0,0,0,0.5);
   box-shadow:0 0 20px #6a0dad,0 0 40px #8a2be2,0 0 60px #ff00ff;
   width:90%;
   max-width:1100px;
@@ -176,11 +176,20 @@ body, html {
 /* Fade up for paragraphs */
 @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
 
-/* Responsive */
+/* Responsive adjustments */
 @media screen and (max-width:900px) {
   #mainContainer { flex-direction:column; align-items:center; }
-  .text-section { padding-right:0; margin-bottom:20px; }
-  .slideshow-box { width:80%; height:300px; }
+  .text-section { padding-right:0; margin-bottom:20px; width:90%; text-align:center; }
+  .slideshow-box { width:90%; height:300px; margin-top:20px; }
+  .text-section h1 { font-size:6vw; }
+  .text-section p { font-size:4vw; line-height:1.5; }
+  .text-section .signature { font-size:5vw; }
+  #landing h1 { font-size:8vw; }
+  #landing button { font-size:4vw; padding:10px 20px; }
+}
+@media screen and (max-width:600px) {
+  #mainContainer { padding:15px; }
+  .slideshow-box { height:220px; }
 }
 </style>
 </head>
@@ -214,7 +223,7 @@ body, html {
   </div>
 </div>
 
-<!-- Background music (will play on Enter) -->
+<!-- Background music (plays on Enter) -->
 <audio id="bgMusic" loop>
   <source src="blue acoustic.mpeg" type="audio/mpeg">
 </audio>
@@ -224,7 +233,6 @@ function enterSite() {
   document.getElementById('landing').style.display='none';
   document.getElementById('mainContainer').style.display='flex';
   
-  // Play music on Enter click
   const audio = document.getElementById('bgMusic');
   audio.play().catch(e => console.log("Audio play failed:", e));
 }
