@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Aziza | My Heart</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body, html {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:'Roboto',sans-serif;
+  background: url('4.jfif') no-repeat center center fixed; /* <-- Your background image */
+  background-size: cover;
+}
+
+/* Landing overlay */
+#landing {
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0; left:0;
+  background: radial-gradient(circle, rgba(0,0,0,0.5)0%, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.5)100%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:100;
+  color:#ff99ff;
+  font-family:'Orbitron',sans-serif;
+  text-align:center;
+}
+
+#landing h1 {
+  font-size:4vw;
+  text-shadow:0 0 10px #ff00ff,0 0 20px #8a2be2,0 0 30px #6a0dad;
+  margin-bottom:30px;
+}
+
+#landing button {
+  padding:15px 30px;
+  font-size:1.2rem;
+  background:#9b00ff;
+  color:white;
+  border:none;
+  border-radius:15px;
+  cursor:pointer;
+  box-shadow:0 0 10px #ff00ff,0 0 20px #8a2be2;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#landing button:hover {
+  transform:scale(1.1);
+  box-shadow:0 0 20px #ff00ff,0 0 40px #8a2be2;
+}
+
+/* Ambient glow */
+.ambient-glow {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0; left:0;
+  background: radial-gradient(circle, rgba(155,0,255,0.15) 0%, rgba(138,43,226,0.1) 50%, rgba(255,0,255,0.05) 100%);
+  z-index:1;
+  pointer-events:none;
+}
+
+/* Particles */
+.particle {
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#ff00ff;
+  opacity:0.8;
+  box-shadow:0 0 10px #ff00ff,0 0 20px #8a2be2;
+  animation: floatParticle 10s linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {transform:translateY(0) translateX(0) scale(1); opacity:0.8;}
+  50% {transform:translateY(-200px) translateX(50px) scale(1.2); opacity:0.5;}
+  100% {transform:translateY(-400px) translateX(-50px) scale(1); opacity:0;}
+}
+
+/* Neon container */
+#mainContainer {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  justify-content:center;
+  padding:30px;
+  border-radius:20px;
+  background: rgba(0,0,0,0.5); /* semi-transparent to show bg */
+  box-shadow:0 0 20px #6a0dad,0 0 40px #8a2be2,0 0 60px #ff00ff;
+  width:90%;
+  max-width:1100px;
+  position:relative;
+  z-index:10;
+  margin:auto;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+/* Text section */
+.text-section {
+  flex:1;
+  min-width:250px;
+  padding-right:30px;
+}
+
+.text-section h1 {
+  font-family:'Orbitron',sans-serif;
+  font-size:3vw;
+  color:#ff99ff;
+  text-shadow:0 0 10px #ff00ff,0 0 20px #8a2be2,0 0 30px #6a0dad;
+  margin-bottom:20px;
+}
+
+.text-section p {
+  font-size:1.3rem;
+  line-height:1.8;
+  color:#e0ccff;
+  text-shadow:0 0 5px #6a0dad,0 0 10px #8a2be2;
+  margin-bottom:15px;
+  opacity:0;
+  transform:translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+.text-section p.active {
+  text-shadow:0 0 15px #ff00ff,0 0 25px #8a2be2;
+}
+
+.text-section .signature {
+  font-family:'Orbitron',sans-serif;
+  font-size:1.5rem;
+  color:#ff99ff;
+  text-shadow:0 0 10px #ff00ff,0 0 20px #8a2be2;
+  margin-top:25px;
+}
+
+/* Slideshow */
+.slideshow-box {
+  flex:0 0 35%;
+  max-width:400px;
+  height:500px;
+  border-radius:15px;
+  border:2px solid #9b00ff;
+  box-shadow:0 0 15px #6a0dad,0 0 25px #8a2be2,0 0 40px #ff00ff;
+  overflow:hidden;
+  background:black;
+  position:relative;
+  margin-top:20px;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.slide {
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 2s ease-in-out, transform 2s ease-in-out;
+}
+
+.slide.active {
+  opacity:1;
+  transform:scale(1.05);
+}
+
+/* Fade up for paragraphs */
+@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+
+/* Responsive */
+@media screen and (max-width:900px) {
+  #mainContainer { flex-direction:column; align-items:center; }
+  .text-section { padding-right:0; margin-bottom:20px; }
+  .slideshow-box { width:80%; height:300px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Landing overlay -->
+<div id="landing">
+  <h1>Welcome Az ✨</h1>
+  <button onclick="enterSite()">Enter</button>
+</div>
+
+<!-- Ambient glow & particles -->
+<div class="ambient-glow"></div>
+<div id="particles"></div>
+
+<!-- Main neon container -->
+<div id="mainContainer" style="display:none;">
+  <div class="text-section">
+    <h1>For You Aziza ❤️</h1>
+    <p>I made this place just to tell you what I can’t say out loud…</p>
+    <p>I love you. I always have, and I always will. In a way of finding me, I lost the most precious thing that has ever happened to me… <strong>you</strong>. Losing you… losing <em>us</em>… it’s the hardest mistake I’ve ever made. I was careless, I was foolish, but my heart never stopped knowing the truth—you are everything to me.</p>
+    <p>I think about the little moments we shared, and even though they were brief, they shine brighter than anything else in my life. I wish I could go back, relive those days, and fall in love with you all over again—exactly the same way.</p>
+    <p>You stole my heart in a way no one ever could. I’ve never loved anyone like this, and I never will. I’m sorry for my mistakes, for my silence, for any hurt I caused—but Aziza… you are my most precious memory, my deepest truth, my forever love.</p>
+    <div class="signature">Always, Redd</div>
+  </div>
+
+  <div class="slideshow-box">
+    <div class="slide active" style="background-image:url('az1.jpeg');"></div>
+    <div class="slide" style="background-image:url('az2.jpeg');"></div>
+    <div class="slide" style="background-image:url('az3.jpeg');"></div>
+  </div>
+</div>
+
+<!-- Background music (will play on Enter) -->
+<audio id="bgMusic" loop>
+  <source src="blue acoustic.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+function enterSite() {
+  document.getElementById('landing').style.display='none';
+  document.getElementById('mainContainer').style.display='flex';
+  
+  // Play music on Enter click
+  const audio = document.getElementById('bgMusic');
+  audio.play().catch(e => console.log("Audio play failed:", e));
+}
+
+// Paragraph staggered glow
+const paragraphs=document.querySelectorAll('.text-section p, .text-section .signature');
+paragraphs.forEach((p,i)=>{p.style.animationDelay=`${i*1.5}s`;});
+
+// Particles
+const particleContainer=document.getElementById('particles');
+for(let i=0;i<50;i++){
+  const particle=document.createElement('div');
+  particle.classList.add('particle');
+  particle.style.left=Math.random()*100+'vw';
+  particle.style.top=Math.random()*100+'vh';
+  particle.style.animationDuration=(5+Math.random()*10)+'s';
+  particleContainer.appendChild(particle);
+}
+
+// Particle mouse movement
+document.addEventListener('mousemove', e=>{
+  const particles=document.querySelectorAll('.particle');
+  particles.forEach(p=>{
+    const offsetX=(Math.random()-0.5)*20;
+    const offsetY=(Math.random()-0.5)*20;
+    p.style.transform=`translate(${offsetX}px,${offsetY}px)`;
+  });
+});
+
+// Slideshow
+const slides=document.querySelectorAll('.slide');
+let currentSlide=0;
+setInterval(()=>{
+  slides[currentSlide].classList.remove('active');
+  currentSlide=(currentSlide+1)%slides.length;
+  slides[currentSlide].classList.add('active');
+},5000);
+</script>
+
+</body>
+</html>
