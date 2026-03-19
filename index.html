@@ -13,7 +13,7 @@ body, html {
   height:100%;
   overflow-x:hidden;
   font-family:'Roboto',sans-serif;
-  background: url('4.jfif') no-repeat center center fixed; /* <-- Your background image */
+  background: url('4.jfif') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -147,7 +147,9 @@ body, html {
 .slideshow-box {
   flex:0 0 35%;
   max-width:400px;
-  height:500px;
+  width:100%;
+  height:auto;
+  aspect-ratio:4/5;
   border-radius:15px;
   border:2px solid #9b00ff;
   box-shadow:0 0 15px #6a0dad,0 0 25px #8a2be2,0 0 40px #ff00ff;
@@ -180,7 +182,7 @@ body, html {
 @media screen and (max-width:900px) {
   #mainContainer { flex-direction:column; align-items:center; }
   .text-section { padding-right:0; margin-bottom:20px; width:90%; text-align:center; }
-  .slideshow-box { width:90%; height:300px; margin-top:20px; }
+  .slideshow-box { width:90%; height:auto; aspect-ratio:4/5; margin-top:20px; }
   .text-section h1 { font-size:6vw; }
   .text-section p { font-size:4vw; line-height:1.5; }
   .text-section .signature { font-size:5vw; }
@@ -189,7 +191,7 @@ body, html {
 }
 @media screen and (max-width:600px) {
   #mainContainer { padding:15px; }
-  .slideshow-box { height:220px; }
+  .slideshow-box { width:95%; height:auto; aspect-ratio:4/5; margin-top:15px; }
 }
 </style>
 </head>
@@ -217,9 +219,9 @@ body, html {
   </div>
 
   <div class="slideshow-box">
-    <div class="slide active" style="background-image:url('az1.jpeg');"></div>
-    <div class="slide" style="background-image:url('az2.jpeg');"></div>
-    <div class="slide" style="background-image:url('az3.jpeg');"></div>
+    <div class="slide active" style="background-image:url('Az1.jpeg');"></div>
+    <div class="slide" style="background-image:url('Az2.jpeg');"></div>
+    <div class="slide" style="background-image:url('Az3.jpeg');"></div>
   </div>
 </div>
 
